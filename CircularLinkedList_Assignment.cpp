@@ -19,11 +19,11 @@ public:
 
     void insertAtEnd(int value) 
     {
-        Node* newNode = new Node(value);
+        Node* new_node = new Node(value);
         if (!head_node) 
         {
-            head_node = newNode;
-            newNode->next = head_node;
+            head_node = new_node;
+            new_node->next = head_node;
         }
         else 
         {
@@ -32,18 +32,18 @@ public:
             {
                 cur_node = cur_node->next;
             }
-            cur_node->next = newNode;
-            newNode->next = head_node;
+            cur_node->next = new_node;
+            new_node->next = head_node;
         }
     }
 
     void insertAtBeginning(int value) 
     {
-        Node* newNode = new Node(value);
+        Node* new_node = new Node(value);
         if (!head_node) 
         {
-            head_node = newNode;
-            newNode->next = head_node;
+            head_node = new_node;
+            new_node->next = head_node;
         }
         else 
         {
@@ -52,9 +52,9 @@ public:
             {
                 cur_node = cur_node->next;
             }
-            cur_node->next = newNode;
-            newNode->next = head_node;
-            head_node = newNode;
+            cur_node->next = new_node;
+            new_node->next = head_node;
+            head_node = new_node;
         }
     }
 
@@ -138,7 +138,7 @@ public:
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* new_node = new Node(value);
         Node* cur_node = head_node;
         for (int i = 0; i < index - 1; i++) 
         {
@@ -146,12 +146,12 @@ public:
             if (cur_node == head_node)
             {
                 std::cout << "Index out of bounds." << std::endl;
-                delete newNode;
+                delete new_node;
                 return;
             }
         }
-        newNode->next = cur_node->next;
-        cur_node->next = newNode;
+        new_node->next = cur_node->next;
+        cur_node->next = new_node;
     }
 
     void deleteFromIndex(int index) 
@@ -175,16 +175,16 @@ public:
             }
         }
 
-        Node* toDelete = cur_node->next;
-        if (toDelete == head_node) 
+        Node* to_delete = cur_node->next;
+        if (to_delete->next == head_node)
         {
             cur_node->next = head_node;
         }
         else 
         {
-            cur_node->next = toDelete->next;
+            cur_node->next = to_delete->next;
         }
-        delete toDelete;
+        delete to_delete;
     }
 
     void reverse() 
